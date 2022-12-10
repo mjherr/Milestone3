@@ -1,30 +1,29 @@
 //Dependencies
-
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
-const bodyParser = require('body-parser')
-const cors = require('cors')
+const PORT = process.env.PORT
 
 //Middleware
-
 require('dotenv').config()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true},
+    () => { console.log('connected to mongo: ', process.env.MONGO_URI) }
+)
 
-//Root
+//Routes
 app.get('/', (res, req) => {
     req.send('Hello World')
 })
 
-//Controllers
+//404 Page
 
+//Cards
 const cardController = require('./controllers/card_controller')
-
 app.use('/cards', cardController)
 
 //Listen
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`Listening on port: ${process.env.PORT}`)
+app.listen(PORT || 3000, () => {
+    console.log('listening on port', PORT);
 })
