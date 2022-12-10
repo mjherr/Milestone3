@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 //Schema
-const flashCardSchema = new Schema({
+const cardSchema = new Schema({
     question: {
         type: String,
         required: true
@@ -25,4 +25,4 @@ const flashCardSchema = new Schema({
     }
 });
 
-module.exports = flashCardSchema
+module.exports = cardSchema
