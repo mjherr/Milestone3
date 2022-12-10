@@ -1,7 +1,16 @@
 //dependencies
+const { Router } = require('express');
 const express = require('express')
 const cards = express.Router()
 const Cards = require('../models/card.js')
+
+
+//GET for all flashcards
+
+cards.get('/', card_controller.getAllCards);
+
+//GET one flashcard
+cards.get('/:id', card_controller.getOneCard);
 
 //Create a Flashcard
 
