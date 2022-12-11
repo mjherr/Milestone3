@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 import flashcardList from './components/flashcard_list';
 
+const express = require("express");
+const bodyparser = require("body-parser");
+const mongoose = require("mongoose");
+
+const postroutes = require('./routes/posts');
+const userRoutes = require("./routes/user");
+
+const path = require("path");
+
+const app = express();
+
 function App() {
    const [cards, setCards] = useState(SAMPLE_CARDS)
 
@@ -24,4 +35,5 @@ const SAMPLE_CARDS = [
   },
 ];
 
+module.exports = app;
 export default App;
