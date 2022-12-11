@@ -14,14 +14,6 @@ const cardSchema = new Schema({
     category: {
         type: String,
         required: true
-    },
-    difficulty: {
-        type: Number,
-        required: false
-    },
-    dateAdded: {
-        type: Date,
-        default: Date.now
     }
 });
 
