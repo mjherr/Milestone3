@@ -1,39 +1,19 @@
-import React, { useState } from 'react'
-import flashcardList from './components/flashcard_list';
-
-const express = require("express");
-const bodyparser = require("body-parser");
-const mongoose = require("mongoose");
-
-const postroutes = require('./routes/posts');
-const userRoutes = require("./routes/user");
-
-const path = require("path");
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 const app = express();
+dotenv.config();
 
-function App() {
-   const [cards, setCards] = useState(SAMPLE_CARDS)
 
-   return (
-     <flashcardList flashcards={cards} />
-  );
-}
+//middleware
 
-const SAMPLE_CARDS = [
-  {
-    id: 1,
-    question: 'What is 2 + 2?',
-    answer: '4',
-    options: ['2', '3', '5', '4']
-  },
-  {
-    id: 2,
-    question: 'What is three + three?',
-    answer: '6',
-    options: ['2', '6', '8', '4']
-  },
-];
+//connections
+mongoose.connect("MONGO_URI=mongodb://localhost:27017/travel", {useNewUrlParser: true, useUnifiedTo})
 
-module.exports = app;
-export default App;
+
+app.use("/", (req, res) => {
+  res.send('home');
+})
+
+app.listen(3000, () => console.log("Listening to port 3000") )
