@@ -1,11 +1,11 @@
-import user from "../models/user";
+import user from "../models/User";
 
 export const getAllUsers = async (req, res) => {
     let users;
     try { 
         users = await user.find();
      }catch (err) {
-         console.log(err);
+         return console.log(err);
      }
 
      if (!users) {
